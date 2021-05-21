@@ -2,23 +2,28 @@ var app = new Vue(
     {
         el: '#root',
         data: {
-            cds: []
+            genreSelected: '',
+            cds: [],
+            
         },
         
         methods: {
-                                
+            getDischi: function() {
+                axios
+                .get('http://localhost/classe-31/dischi/recap/server.php', {
+                    params: {
+                        genere: this.genreSelected 
+                    }
+                })
+                .then((response) => {
+    
+                    this.cds = response.data;
+                });
+            }                   
         },
         
         mounted() {
-            
-            axios
-            .get('http://localhost:8888/php-ajax-dischi/vue-php/server.php')
-            .then((response) => {
-                console.log(response);
-
-                this.cds = response.data;
-            });
-            
+            this.getDischi();
         }
     }
 );

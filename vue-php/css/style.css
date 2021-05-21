@@ -30,6 +30,15 @@ header {
 }
 
 /* MAIN */
+
+.filtro-album {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+
+
 .cds-container {
     display: flex;
     flex-wrap: wrap;
